@@ -1,0 +1,590 @@
+/* =====================================
+   1. BASE RESET
+===================================== */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* =====================================
+   2. THEME VARIABLES
+===================================== */
+
+:root {
+    --brand: hsl(222, 37%, 20%);
+    --secondary: hsl(210, 70%, 55%);
+    --accent: hsl(195, 80%, 75%);
+
+    --text: hsl(222, 30%, 10%);
+    --bg: hsl(210, 40%, 98%);
+    --radius: 0.75rem;
+
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 2rem;
+}
+
+
+/* =====================================
+   3. GLOBAL STYLES
+===================================== */
+
+html {
+    scroll-behavior: smooth; scroll-padding-top: 5rem;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    line-height: 1.6;
+
+    color: var(--text);
+    background-color: var(--bg);
+}
+
+
+/* =====================================
+   4. GROUP SELECTORS
+===================================== */
+
+h1, h2, h3, h4 {
+    color: var(--accent);
+    line-height: 1.2;
+}
+
+p, li {
+    font-size: 1rem;
+}
+
+a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+
+/* =====================================
+   5. COMMON ELEMENTS
+===================================== */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+button, input, textarea {
+    font: inherit;
+}
+
+
+/* 8 NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--brand);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    border-radius: var(--radius);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.nav-links a:hover {
+    background-color: white;
+    color: var(--brand);
+}
+
+/* 9 HERO SECTION */
+.hero {
+    min-height: 70vh;
+    display: grid;
+    place-items: center;
+    position: relative;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--brand), var(--secondary));
+    background-size: cover;
+    color: white;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+.hero-content p {
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    margin-bottom: 1.5rem;
+}
+
+.hero-button {
+    display: inline-block;
+    background-color: white;
+    color: var(--brand);
+    padding: 0.8rem 1.5rem;
+    border-radius: var(--radius);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.hero-button:hover {
+    background-color: var(--accent);
+}
+
+.hero-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--accent);
+    color: var(--brand);
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius);
+    font-size: 0.85rem;
+}
+
+/* 10 RESPONSIVE NAVBAR */
+@media (max-width: 40rem) {
+    .navbar {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.3rem;
+    }
+
+    .nav-links a {
+        padding: 0.5rem;
+    }
+
+    .hero-badge {
+        top: 0.8rem;
+        right: 0.8rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* 11 ABOUT SECTION */
+.about-section {
+    padding: 4rem 0;
+    background-color: var(--bg);
+}
+
+.about-container {
+    width: 90%;
+    max-width: 55rem;
+    margin: 0 auto;
+}
+
+.about-container h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--brand);
+}
+
+/* ABOUT PHOTO AND TEXT */
+.about-content {
+    display: flow-root;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.about-image {
+    float: left;
+    width: clamp(8rem, 25%, 12rem);
+    max-width: 40%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 1.5rem 1rem 0;
+}
+
+.about-content p {
+     margin-bottom: var(--spacing-medium);
+}
+
+/* LARGE FIRST LETTER */
+.about-content p::first-letter {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--secondary);
+}
+/* 12 CV SECTION */
+.cv-section {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.cv-container {
+    width: 90%;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.cv-container h2 {
+    text-align: center;
+    color: var(--brand);
+    margin-bottom: var(--spacing-large);
+}
+
+/* CV TWO-COLUMN LAYOUT */
+.cv-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+}
+
+.cv-content h3 {
+    color: var(--brand);
+    margin-bottom: 1.5rem;
+}
+
+/* EDUCATION AND EXPERIENCE TIMELINE */
+.timeline {
+    border-left: 0.2rem solid var(--accent);
+    padding-left: 1.5rem;
+}
+
+.timeline-item {
+    position: relative;
+    padding: 0 0 2rem 0;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -1.95rem;
+    top: 0.3rem;
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color: var(--secondary);
+    border-radius: 50%;
+}
+
+.timeline-item h4 {
+    color: var(--brand);
+    font-size: 1.1rem;
+    margin-bottom: 0.4rem;
+}
+
+.timeline-date {
+    display: inline-block;
+    color: var(--secondary);
+    font-size: 0.85rem;
+    font-weight: bold;
+    margin-bottom: 0.6rem;
+}
+
+.timeline-item p {
+    color: var(--text);
+}
+
+/* SKILLS AND LANGUAGES */
+.cv-details {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-small);
+}
+
+.skill-tags span {
+    background-color: var(--bg);
+    color: var(--brand);
+    border: 0.1rem solid var(--accent);
+    border-radius: var(--radius);
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* RESPONSIVE CV LAYOUT */
+@media (max-width: 40rem) {
+    .cv-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
+/* 13 PROJECTS SECTION */
+.projects-section {
+    padding: 4rem 0;
+    background-color: var(--bg);
+}
+
+.projects-container {
+    width: 90%;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.projects-container h2 {
+    text-align: center;
+    color: var(--brand);
+    margin-bottom: 1rem;
+}
+
+.projects-intro {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+/* PROJECTS GRID */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1.5rem;
+}
+
+/* PROJECT CARD */
+.project-card {
+    background-color: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 0.2rem 0.7rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* PROJECT IMAGE */
+.project-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+/* PROJECT INFORMATION */
+.project-info {
+    padding: 1.2rem;
+}
+
+.project-info h3 {
+    color: var(--brand);
+    margin-bottom: 0.7rem;
+}
+
+.project-info p {
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+/* SECOND PROJECT CARD */
+.project-card:nth-child(2) {
+    border-top: 0.25rem solid var(--secondary);
+}
+
+/* CARD HOVER EFFECT */
+.project-card:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0.7rem 1.5rem rgba(0, 0, 0, 0.2);
+}
+/* 14 CONTACT SECTION */
+.contact-section {
+    padding: 4rem 0;
+    background-color: white;
+}
+
+.contact-container {
+    width: 90%;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+.contact-info a {
+    overflow-wrap: anywhere;
+}
+
+.contact-container h2 {
+    text-align: center;
+    color: var(--brand);
+    margin-bottom: 2.5rem;
+}
+
+/* CONTACT TWO-COLUMN GRID */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 2.5rem;
+}
+
+.contact-details h3 {
+    color: var(--brand);
+    margin-bottom: 1rem;
+}
+
+.contact-details > p {
+    margin-bottom: 1.5rem;
+}
+
+.contact-info {
+    margin-bottom: 1rem;
+}
+
+.contact-info h4 {
+    color: var(--secondary);
+    margin-bottom: 0.3rem;
+}
+
+/* CONTACT FORM GRID */
+.contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--brand);
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 0.1rem solid var(--accent);
+    border-radius: var(--radius);
+    font: inherit;
+    outline: none;
+}
+
+/* EMAIL INPUT */
+input[type="email"] {
+    background-color: var(--bg);
+}
+
+/* INPUT FOCUS EFFECT */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: teal;
+    box-shadow: 0 0 0.5rem rgba(0, 128, 128, 0.3);
+}
+
+/* MESSAGE AND BUTTON FULL WIDTH */
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.submit-button {
+    grid-column: 1 / -1;
+    padding: 0.8rem 1.5rem;
+    background-color: var(--brand);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    font: inherit;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: var(--secondary);
+}
+
+/* 15 FOOTER */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 3rem 5%;
+    background-color: var(--brand);
+    color: white;
+}
+
+.footer-column {
+    flex: 1;
+}
+
+.footer-column h3 {
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.footer-column p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-column a {
+    display: block;
+    color: white;
+    margin-bottom: 0.5rem;
+    text-decoration: none;
+}
+
+.footer-column a:hover {
+    color: var(--accent);
+}
+
+/* 16 BACK TO TOP BUTTON */
+.back-to-top {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--secondary);
+    width: 3rem;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    color: white;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 1.2rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.2);
+    z-index: 20;
+}
+
+/* 17 RESPONSIVE CONTACT SECTION */
+@media (max-width: 40rem) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form {
+        grid-template-columns: 1fr;
+    }
+
+    .footer {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+}
